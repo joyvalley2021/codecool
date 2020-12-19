@@ -1,0 +1,50 @@
+public class Main {
+  public static void main(String[] args) {
+    System.out.println("Hello world helen!");
+    int[] a = {1, 2, 3, 4, 5};
+    Main m = new Main();
+    ListNode h = m.buildList(a);
+    m.printList(h);
+    ListNode h2 = m.reverseList(h);
+    m.printList(h2);
+
+  }
+
+  ListNode buildList(int[] a) {
+    ListNode p = new ListNode(0);
+    ListNode h = p;
+    for (int i : a) {
+      p.next = new ListNode(i);
+      p = p.next;
+    }
+    return h.next;
+  }
+
+  void printList(ListNode h) {
+    for (ListNode n = h; n != null; n = n.next) {
+      System.out.print(n.val + " ");
+    }
+    System.out.println();
+  }
+
+  ListNode reverseList(ListNode h) {
+    ListNode p = new ListNode(0);
+    ListNode cur = h;
+    while (cur != null) {
+      ListNode next = cur.next;
+      cur.next = p.next;
+      p.next = cur;
+      cur = next;
+    }
+    return p.next;
+  }
+}
+
+class ListNode {
+  ListNode next;
+  int val;
+
+  public ListNode(int val) {
+    this.val = val;
+  }
+}
